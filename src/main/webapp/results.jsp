@@ -1,3 +1,4 @@
+
 <%@ page import="java.util.*"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,15 +9,16 @@
         Available Brands
     </h1>
     <%
-        List results = (List) request.getAttribute("brands");
+        List <String> brands = (List) request.getAttribute("brands");
         int quantity = (Integer) request.getAttribute("quantity");
-        Iterator it = results.iterator();
+//        Iterator it = results.iterator();
+
         out.println("<p>We have </p>");
-        while (it.hasNext()){
-            out.println("<p>" + it.next() + "</p>");
+
+        for (String brand: brands){
+            out.println("<p>" + brand + "</p>");
         }
         out.println("<p>Stock Quantity: " + quantity + "</p>");
-
     %>
 </center>
 

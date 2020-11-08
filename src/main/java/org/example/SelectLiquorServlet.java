@@ -11,18 +11,24 @@ import java.util.List;
 
 import org.example.model.LiquorType;
 
-@WebServlet (name = "selectliquorservlet", urlPatterns = "/SelectLiquor")
+@WebServlet ("/SelectLiquor")
 
 public class SelectLiquorServlet extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         String liquorType = request.getParameter("type");
+
         LiquorService liquorService = new LiquorService();
+
         LiquorType lType = LiquorType.valueOf(liquorType);
+
         List liquorBrands = liquorService.getAvailableBrands(lType);
+
         int liquorQuantity = liquorService.getBrandStock(lType);
+
         request.setAttribute("quantity", liquorQuantity);
         request.setAttribute("brands", liquorBrands);
+
         RequestDispatcher view = request.getRequestDispatcher("results.jsp");
         view.forward(request, response);
     }

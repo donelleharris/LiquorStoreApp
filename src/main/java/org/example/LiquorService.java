@@ -7,7 +7,8 @@ import org.example.model.LiquorType;
 
 public class LiquorService {
     public List getAvailableBrands(LiquorType type){
-        List brands = new ArrayList();
+        List <String> brands = new ArrayList <>();
+
         if(type.equals(LiquorType.BOURBON)){
             brands.add("1792");
             brands.add("Woodford Reserve");
