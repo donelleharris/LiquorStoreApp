@@ -1,4 +1,4 @@
-package org.example;
+package org.example.controllers;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
