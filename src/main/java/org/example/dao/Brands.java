@@ -4,6 +4,6 @@ import org.example.model.Brand;
 import java.util.List;
 
 public interface Brands {
-    List<Brand> all();
-    void insert(Brand brand)
+
+    Long insert(Brand brand);
 }
