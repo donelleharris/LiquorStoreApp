@@ -1,14 +1,23 @@
 package org.example.model;
 
 public class Brand {
+    private long id;
     private String brand;
     private int quantity;
-    private String type;
+    private String category;
     public Brand(){};
     public Brand(String brandName, int quantity, String liquorType){
         this.brand = brandName;
         this.quantity = quantity;
-        this.type = liquorType;
+        this.category = liquorType;
+    }
+
+    public Brand(long id, String brand, int quantity, String category) {
+        this.id = id;
+        this.brand = brand;
+        this.quantity = quantity;
+        this.category = category;
+
     }
 
     public String getBrand() {
@@ -27,11 +36,11 @@ public class Brand {
         this.quantity = quantity;
     }
 
-    public String getType() {
-        return type;
+    public String getCategory() {
+        return category;
     }
 
     public void setType(String type) {
-        this.type = type;
+        this.category = type;
     }
 }

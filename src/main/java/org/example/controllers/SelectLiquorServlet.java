@@ -16,7 +16,7 @@ import org.example.model.LiquorType;
 public class SelectLiquorServlet extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        String liquorType = request.getParameter("type");
+        String liquorType = request.getParameter("category");
 
         LiquorService liquorService = new LiquorService();
 

@@ -50,8 +50,6 @@ public class LiquorService {
             stockCount = 40;
         } else if(type.equals(LiquorType.VODKA)){
             stockCount = 50;
-        } else {
-            stockCount = 0;
         }
         return stockCount;
     }

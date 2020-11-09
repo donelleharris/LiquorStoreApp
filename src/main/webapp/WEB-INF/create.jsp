@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Create a Product</title>
+    <title>Add a Product</title>
 </head>
 <body>
     <center>

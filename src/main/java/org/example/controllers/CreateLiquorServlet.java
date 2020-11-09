@@ -12,16 +12,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
 @WebServlet("/AddLiquor")
 public class CreateLiquorServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("brands", DaoFactory.getBrandsDao().all());
         request.getRequestDispatcher("/create.jsp").forward(request, response);
     }
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Brands brandsDao = DaoFactory.getBrandsDao();
 
         String liquorCategory = request.getParameter("type");
@@ -30,6 +30,6 @@ public class CreateLiquorServlet extends HttpServlet {
 
         Brand brand = new Brand(liquorName, quantity, liquorCategory);
         brandsDao.insert(brand);
-        response.sendRedirect("/brands");
+        response.sendRedirect("/results");
     }
 }

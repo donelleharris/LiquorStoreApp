@@ -1,5 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<html>
 <head>
     <meta charset="UTF-8">
     <title>Liquor Store</title>
@@ -11,13 +13,10 @@
     </h1>
     <form method="post" action="SelectLiquor">
         <br>
-        <select name="type" size="1">
-            <option value="BOURBON">BOURBON</option>
-            <option value="WINE">WINE</option>
-            <option value="BEER">BEER</option>
-            <option value="VODKA">VODKA</option>
-            <option value="SCOTCH">SCOTCH</option>
-            <option value="GIN">GIN</option>
+        <select name="category" size="1">
+            <c:forEach var="brands" items="${brands}">
+                <option value="${brands.category}">${brands.category}</option>
+            </c:forEach>
         </select>
         <br><br>
         <input type="submit">
