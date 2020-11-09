@@ -5,8 +5,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Liquor Store</title>
+    <jsp:include page="/WEB-INF/partials/head.jsp" />
 </head>
 <body>
+<jsp:include page="/WEB-INF/partials/navbar.jsp" />
+<br>
 <center>
     <h1>
         Select the type of Liquor
