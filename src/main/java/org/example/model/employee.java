@@ -2,20 +2,20 @@ package org.example.model;
 
 import org.mindrot.jbcrypt.BCrypt;
 
-public class User {
+public class employee {
     private long id;
     private String username;
     private String password;
 
-    public User() {}
+    public employee() {}
 
-    public User(long id, String username, String password) {
+    public employee(long id, String username, String password) {
         this.id = id;
         this.username = username;
         this.password = password;
     }
 
-    public User(String username, String password) {
+    public employee(String username, String password) {
         this.username = username;
         this.setPassword(password);
     }

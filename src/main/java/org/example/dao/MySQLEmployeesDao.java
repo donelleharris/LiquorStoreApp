@@ -1,13 +1,13 @@
 package org.example.dao;
 
-import org.example.model.User;
+import org.example.model.employee;
 import com.mysql.cj.jdbc.Driver;
 
 import java.sql.*;
 
-public class MySQLUsersDao implements Users{
+public class MySQLEmployeesDao implements employees {
     private Connection connection;
-    public MySQLUsersDao(Config config){
+    public MySQLEmployeesDao(Config config){
         try {
             DriverManager.registerDriver(new Driver());
             connection = DriverManager.getConnection(
@@ -21,7 +21,7 @@ public class MySQLUsersDao implements Users{
     }
 
     @Override
-    public User findByUsername(String username) {
+    public employee findByUsername(String username) {
         String query = "SELECT * FROM users WHERE username = ? LIMIT 1";
         try {
             PreparedStatement stmt = connection.prepareStatement(query);
@@ -33,12 +33,12 @@ public class MySQLUsersDao implements Users{
         }    }
 
     @Override
-    public Long insert(User user) {
+    public Long insert(employee employee) {
         String query = "INSERT INTO users(username, password) VALUES (?, ?)";
         try {
             PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-            stmt.setString(1, user.getUsername());
-            stmt.setString(2, user.getPassword());
+            stmt.setString(1, employee.getUsername());
+            stmt.setString(2, employee.getPassword());
             stmt.executeUpdate();
             ResultSet rs = stmt.getGeneratedKeys();
             rs.next();
@@ -48,11 +48,11 @@ public class MySQLUsersDao implements Users{
         }
     }
 
-    private User extractUser(ResultSet rs) throws SQLException {
+    private employee extractUser(ResultSet rs) throws SQLException {
         if (! rs.next()) {
             return null;
         }
-        return new User(
+        return new employee(
                 rs.getLong("id"),
                 rs.getString("username"),
                 rs.getString("password")

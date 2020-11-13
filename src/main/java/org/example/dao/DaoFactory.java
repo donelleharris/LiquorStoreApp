@@ -2,7 +2,7 @@ package org.example.dao;
 
 public class DaoFactory {
     public static Brands brandsDao;
-    public static Users usersDao;
+    public static employees employeesDao;
     private static Config config = new Config();
 
     public static Brands getBrandsDao(){
@@ -12,10 +12,10 @@ public class DaoFactory {
         return brandsDao;
     }
 
-    public static Users getUsersDao () {
-        if (usersDao == null){
-            usersDao = new MySQLUsersDao(config);
+    public static employees getUsersDao () {
+        if (employeesDao == null){
+            employeesDao = new MySQLEmployeesDao(config);
         }
-        return usersDao;
+        return employeesDao;
     }
 }

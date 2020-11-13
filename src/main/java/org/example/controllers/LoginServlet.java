@@ -2,7 +2,7 @@ package org.example.controllers;
 
 import org.mindrot.jbcrypt.BCrypt;
 import org.example.dao.DaoFactory;
-import org.example.model.User;
+import org.example.model.employee;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,17 +24,17 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        User dbUser = DaoFactory.getUsersDao().findByUsername(username);
+        employee dbEmployee = DaoFactory.getUsersDao().findByUsername(username);
 
-        if (dbUser == null) {
+        if (dbEmployee == null) {
             response.sendRedirect("/login");
             return;
         }
 
-        boolean validAttempt = BCrypt.checkpw(password, dbUser.getPassword());
+        boolean validAttempt = BCrypt.checkpw(password, dbEmployee.getPassword());
 
         if (validAttempt) {
-            request.getSession().setAttribute("user", dbUser);
+            request.getSession().setAttribute("user", dbEmployee);
             response.sendRedirect("/profile");
         } else {
             response.sendRedirect("/login");
