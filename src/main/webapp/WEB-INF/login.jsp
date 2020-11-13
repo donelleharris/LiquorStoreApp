@@ -9,11 +9,11 @@
 <html>
 <head>
     <title>Employees page</title>
-    <jsp:include page="WEB-INF/partials/head.jsp" />
+    <jsp:include page="partials/head.jsp" />
 
 </head>
 <body>
-    <jsp:include page="WEB-INF/partials/navbar.jsp" />
+    <jsp:include page="partials/navbar.jsp" />
     <div class="container">
         <h1>Please Log In</h1>
         <form action="/login" method="POST">
