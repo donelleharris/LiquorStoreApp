@@ -14,22 +14,21 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/AddLiquor")
-public class ResultsServlet extends HttpServlet {
+public class addInventoryServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("brands", DaoFactory.getBrandsDao().all());
         request.getRequestDispatcher("/create.jsp").forward(request, response);
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        Brands brandsDao = DaoFactory.getBrandsDao();
 
-        String liquorCategory = request.getParameter("type");
-        String liquorName = request.getParameter("liquorName");
-        int quantity = Integer.parseInt(request.getParameter("qty"));
+        Brand brand = new Brand(
+                request.getParameter("liquorName"),
+                Integer.parseInt(request.getParameter("qty")),
+                request.getParameter("category")
+        );
 
-        Brand brand = new Brand(liquorName, quantity, liquorCategory);
-        brandsDao.insert(brand);
+        DaoFactory.getBrandsDao().insert(brand);
         response.sendRedirect("/results");
     }
 }

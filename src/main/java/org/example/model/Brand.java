@@ -12,9 +12,9 @@ public class Brand {
         this.category = liquorType;
     }
 
-    public Brand(long id, String brand, int quantity, String category) {
+    public Brand(long id, String brandName, int quantity, String category) {
         this.id = id;
-        this.brand = brand;
+        this.brand = brandName;
         this.quantity = quantity;
         this.category = category;
 
