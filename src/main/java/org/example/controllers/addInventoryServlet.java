@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/AddLiquor")
-public class CreateLiquorServlet extends HttpServlet {
+public class ResultsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("brands", DaoFactory.getBrandsDao().all());
