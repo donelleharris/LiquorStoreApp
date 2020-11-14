@@ -1,22 +1,21 @@
 package org.example.model;
 
-import org.example.util.Password;
 import org.mindrot.jbcrypt.BCrypt;
 
-public class Employee {
+public class employee {
     private long id;
     private String username;
     private String password;
 
-    public Employee() {}
+    public employee() {}
 
-    public Employee(long id, String username, String password) {
+    public employee(long id, String username, String password) {
         this.id = id;
         this.username = username;
         this.password = password;
     }
 
-    public Employee(String username, String password) {
+    public employee(String username, String password) {
         this.username = username;
         this.setPassword(password);
     }
@@ -44,6 +43,6 @@ public class Employee {
     }
 
     public void setPassword(String password) {
-        this.password = Password.hash(password);
+        this.password = BCrypt.hashpw(password, BCrypt.gensalt());
     }
 }

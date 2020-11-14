@@ -1,8 +1,5 @@
 USE liquor_store_db;
 
-DROP TABLE liquor_inventory;
-DROP TABLE employees;
-
 CREATE TABLE IF NOT EXISTS liquor_inventory(
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     brand VARCHAR(255),
@@ -42,6 +39,4 @@ CREATE TABLE IF NOT EXISTS employees(
     username VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
     PRIMARY KEY (id)
-);
-
-INSERT INTO employees(username, password) VALUES ('donelle', 'harris');
+)

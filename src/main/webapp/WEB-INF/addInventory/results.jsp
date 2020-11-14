@@ -1,12 +1,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.*"%>
-<!DOCTYPE html>
-<html lang="en">
+
+<html>
 <head>
     <title>Results</title>
 </head>
 <body>
+<jsp:include page="/WEB-INF/partials/navbar.jsp"/>
 <center>
     <h1>
         Available Brands

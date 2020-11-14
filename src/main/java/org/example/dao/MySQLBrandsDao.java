@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MySQLBrandsDao implements Brands{
-    private Connection connection = null;
+    private Connection connection;
 
     public MySQLBrandsDao(Config config) {
         try {
@@ -26,7 +26,7 @@ public class MySQLBrandsDao implements Brands{
     }
 //    @Override
     public List<Brand> all() {
-        Statement stmt = null;
+        Statement stmt;
         try {
             stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM liquor_inventory");
@@ -38,7 +38,7 @@ public class MySQLBrandsDao implements Brands{
     @Override
     public Long insert(Brand brand) {
         try {
-            String insertQuery = "INSERT INTO brandsInventory(brand, quantity, category) VALUES (?, ?, ?)";
+            String insertQuery = "INSERT INTO liquor_inventory(brand, quantity, category) VALUES (?, ?, ?)";
             PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
             stmt.setString(1, brand.getBrand());
             stmt.setInt(2, brand.getQuantity());
@@ -53,7 +53,7 @@ public class MySQLBrandsDao implements Brands{
     }
 
     private String createInsertQuery(Brand brand) {
-        return "INSERT INTO ads(user_id, title, description) VALUES "
+        return "INSERT INTO liquor_inventory(brand, quantity, category) VALUES "
                 + "(" + brand.getBrand() + ", "
                 + "'" + brand.getQuantity() + "', "
                 + "'" + brand.getCategory() + "')";
