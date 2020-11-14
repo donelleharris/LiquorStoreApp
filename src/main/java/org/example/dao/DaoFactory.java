@@ -12,7 +12,7 @@ public class DaoFactory {
         return brandsDao;
     }
 
-    public static Employees getUsersDao () {
+    public static Employees getEmployeesDao () {
         if (employeesDao == null){
             employeesDao = new MySQLEmployeesDao(config);
         }
