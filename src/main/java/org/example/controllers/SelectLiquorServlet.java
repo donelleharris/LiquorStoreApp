@@ -11,7 +11,7 @@ import java.util.List;
 
 import org.example.model.LiquorType;
 
-@WebServlet ("/SelectLiquor")
+@WebServlet (name = "controllers.SelectLiquorServlet", urlPatterns = "/SelectLiquor")
 
 public class SelectLiquorServlet extends HttpServlet{
     @Override

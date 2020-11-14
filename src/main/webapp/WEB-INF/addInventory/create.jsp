@@ -13,7 +13,7 @@
 <body>
     <center>
         <h1>Add A Product</h1>
-        <form action="/AddLiquor" method="post">
+        <form action="/AddInventory" method="post">
             <label for="liquorName">Name</label>
             <input type="text" name="liquorName" id="liquorName">
             <br>
@@ -29,7 +29,7 @@
                 <option value="SCOTCH">SCOTCH</option>
                 <option value="GIN">GIN</option>
             </select>
-            <button type="submit">Add Liquor</button>
+            <button type="submit">Add Inventory</button>
         </form>
     </center>
 </body>

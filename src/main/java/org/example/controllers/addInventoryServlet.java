@@ -5,7 +5,6 @@ import org.example.dao.DaoFactory;
 import org.example.model.Brand;
 import org.example.model.LiquorType;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,19 +12,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/AddLiquor")
-public class addInventoryServlet extends HttpServlet {
-    @Override
+@WebServlet(name = "controllers.AddInventoryServlet", urlPatterns = "/AddInventory")
+public class AddInventoryServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/create.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/addInventory/create.jsp").forward(request, response);
     }
-    @Override
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
 
         Brand brand = new Brand(
                 request.getParameter("liquorName"),
-                Integer.parseInt(request.getParameter("qty")),
-                request.getParameter("category")
+                Integer.parseInt(request.getParameter("quantity")),
+                request.getParameter("category") //needs to pull value of chosen option from "liquorType" in create.jsp
         );
 
         DaoFactory.getBrandsDao().insert(brand);
