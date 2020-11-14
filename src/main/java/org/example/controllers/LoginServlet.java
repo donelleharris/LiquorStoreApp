@@ -2,7 +2,8 @@ package org.example.controllers;
 
 import org.mindrot.jbcrypt.BCrypt;
 import org.example.dao.DaoFactory;
-import org.example.model.employee;
+import org.example.model.Employee;
+import org.example.util.Password;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,7 +16,7 @@ import java.io.IOException;
 public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (request.getSession().getAttribute("user") != null) {
-            response.sendRedirect("/profile");
+            response.sendRedirect("/employee");
             return;
         }
         request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
@@ -24,18 +25,18 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        employee dbEmployee = DaoFactory.getUsersDao().findByUsername(username);
+        Employee dbEmployee = DaoFactory.getUsersDao().findByUsername(username);
 
         if (dbEmployee == null) {
             response.sendRedirect("/login");
             return;
         }
 
-        boolean validAttempt = BCrypt.checkpw(password, dbEmployee.getPassword());
+        boolean validAttempt = Password.check(password, dbEmployee.getPassword());
 
         if (validAttempt) {
             request.getSession().setAttribute("user", dbEmployee);
-            response.sendRedirect("/profile");
+            response.sendRedirect("/employee");
         } else {
             response.sendRedirect("/login");
         }

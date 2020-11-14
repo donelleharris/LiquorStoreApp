@@ -1,12 +1,13 @@
 package org.example.dao;
 
-import org.example.model.employee;
+import org.example.model.Employee;
 import com.mysql.cj.jdbc.Driver;
 
 import java.sql.*;
 
-public class MySQLEmployeesDao implements employees {
+public class MySQLEmployeesDao implements Employees {
     private Connection connection;
+
     public MySQLEmployeesDao(Config config){
         try {
             DriverManager.registerDriver(new Driver());
@@ -21,8 +22,8 @@ public class MySQLEmployeesDao implements employees {
     }
 
     @Override
-    public employee findByUsername(String username) {
-        String query = "SELECT * FROM users WHERE username = ? LIMIT 1";
+    public Employee findByUsername(String username) {
+        String query = "SELECT * FROM employees WHERE username = ? LIMIT 1";
         try {
             PreparedStatement stmt = connection.prepareStatement(query);
             stmt.setString(1, username);
@@ -30,11 +31,12 @@ public class MySQLEmployeesDao implements employees {
             return extractUser(stmt.executeQuery());
         } catch (SQLException e) {
             throw new RuntimeException("Error finding a user by username", e);
-        }    }
+        }
+    }
 
     @Override
-    public Long insert(employee employee) {
-        String query = "INSERT INTO users(username, password) VALUES (?, ?)";
+    public Long insert(Employee employee) {
+        String query = "INSERT INTO employees(username, password) VALUES (?, ?)";
         try {
             PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             stmt.setString(1, employee.getUsername());
@@ -48,11 +50,11 @@ public class MySQLEmployeesDao implements employees {
         }
     }
 
-    private employee extractUser(ResultSet rs) throws SQLException {
+    private Employee extractUser(ResultSet rs) throws SQLException {
         if (! rs.next()) {
             return null;
         }
-        return new employee(
+        return new Employee(
                 rs.getLong("id"),
                 rs.getString("username"),
                 rs.getString("password")
