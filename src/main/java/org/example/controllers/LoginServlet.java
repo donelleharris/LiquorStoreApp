@@ -1,6 +1,5 @@
 package org.example.controllers;
 
-import org.mindrot.jbcrypt.BCrypt;
 import org.example.dao.DaoFactory;
 import org.example.model.Employee;
 import org.example.util.Password;
@@ -12,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "LoginServlet", urlPatterns = "/login")
+@WebServlet(name = "controllers.LoginServlet", urlPatterns = "/login")
 public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (request.getSession().getAttribute("user") != null) {
@@ -25,7 +24,7 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        Employee dbEmployee = DaoFactory.getUsersDao().findByUsername(username);
+        Employee dbEmployee = DaoFactory.getEmployeesDao().findByUsername(username);
 
         if (dbEmployee == null) {
             response.sendRedirect("/login");
