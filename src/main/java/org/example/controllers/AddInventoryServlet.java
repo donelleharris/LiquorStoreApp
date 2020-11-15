@@ -20,14 +20,13 @@ public class AddInventoryServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-
         Brand brand = new Brand(
                 request.getParameter("liquorName"),
                 Integer.parseInt(request.getParameter("quantity")),
-                request.getParameter("category") //needs to pull value of chosen option from "liquorType" in create.jsp
+                request.getParameter("liquorType")
         );
 
         DaoFactory.getBrandsDao().insert(brand);
-        response.sendRedirect("/results");
+        response.sendRedirect("/WEB-INF/addInventory/results");
     }
 }

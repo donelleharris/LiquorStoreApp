@@ -14,7 +14,7 @@
 <body>
 <jsp:include page="partials/navbar.jsp" />
 <div class="container">
-    <h1>Please fill in your information.</h1>
+    <h1>Please fill in employee information.</h1>
     <form action="/addEmployee" method="post">
         <div class="form-group">
             <label for="username">Username</label>

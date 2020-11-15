@@ -13,7 +13,7 @@
 <%--            <a class="navbar-brand" href="#">Inventory</a>--%>
             </div>
             <ul class="nav navbar-nav navbar-right">
-            <li><a href="/login">Logout</a></li>
+            <li><a href="/login">Login</a></li>
                 <li><a href="#">Logout</a></li>
             </ul>
         </div>

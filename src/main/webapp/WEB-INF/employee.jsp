@@ -18,7 +18,7 @@
     </div>
     <center>
         <a href="/addEmployee"> <button type="submit">Add Employee</button> </a>
-        <a href="/AddInventory"> <button type="submit">Add Inventory</button> </a>
+        <a href="/create"> <button type="submit">Add Inventory</button> </a>
         <a href="#"> <button type="submit">Delete Inventory</button> </a>
         <a href="/results"> <button type="submit">View All Inventory</button> </a>
     </center>

@@ -14,6 +14,6 @@ import java.io.IOException;
 public class ResultsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("ads", DaoFactory.getBrandsDao().all());
-        request.getRequestDispatcher("/WEB-INF/results.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/addInventory/results.jsp").forward(request, response);
     }
 }

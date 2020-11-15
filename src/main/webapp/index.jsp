@@ -11,19 +11,17 @@
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 <br>
 <center>
-    <h1>
-        Select the type of Liquor
-    </h1>
-    <form method="post" action="SelectLiquor">
-        <br>
-        <select name="category" size="1">
-            <c:forEach var="brands" items="${brands}">
-                <option value="${brands.category}">${brands.category}</option>
-            </c:forEach>
-        </select>
-        <br><br>
-        <input type="submit">
-    </form>
+    <div class="container">
+        <h1>Current Inventory</h1>
+
+        <c:forEach var="brand" items="${brands}">
+            <div class="col-md-4">
+                <h2>${brand.brand}</h2>
+                <p>${brand.quantity}</p>
+                <p>${brand.category}</p>
+            </div>
+        </c:forEach>
+    </div>
 </center>
 
 

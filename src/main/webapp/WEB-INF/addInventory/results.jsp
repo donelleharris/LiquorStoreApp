@@ -5,25 +5,22 @@
 <html>
 <head>
     <title>Results</title>
+    <jsp:include page="/WEB-INF/partials/head.jsp" />
 </head>
 <body>
-<jsp:include page="/WEB-INF/partials/navbar.jsp"/>
+<jsp:include page="/WEB-INF/partials/navbar.jsp" />
 <center>
-    <h1>
-        Available Brands
-    </h1>
-    <%
-        List <String> brands = (List) request.getAttribute("brands");
-        int quantity = (Integer) request.getAttribute("quantity");
-//        Iterator it = results.iterator();
+    <div class="container">
+        <h1>Current Inventory</h1>
 
-        out.println("<p>We have </p>");
-
-        for (String brand: brands){
-            out.println("<p>" + brand + " - " + quantity + "</p>");
-        }
-    %>
+        <c:forEach var="brand" items="${brands}">
+            <div class="col-md-4">
+                <h2>${brand.brand}</h2>
+                <p>${brand.quantity}</p>
+                <p>${brand.category}</p>
+            </div>
+        </c:forEach>
+    </div>
 </center>
-
 </body>
 </html>
