@@ -48,7 +48,7 @@ public class MySQLBrandsDao implements Brands{
             rs.next();
             return rs.getLong(1);
         } catch (SQLException e) {
-            throw new RuntimeException("Error creating a new ad.", e);
+            throw new RuntimeException("Error adding to inventory.", e);
         }
     }
 

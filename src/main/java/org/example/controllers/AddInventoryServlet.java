@@ -27,6 +27,6 @@ public class AddInventoryServlet extends HttpServlet {
         );
 
         DaoFactory.getBrandsDao().insert(brand);
-        response.sendRedirect("/WEB-INF/addInventory/results");
+        response.sendRedirect("/results");
     }
 }

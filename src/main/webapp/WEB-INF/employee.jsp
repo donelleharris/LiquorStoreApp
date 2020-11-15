@@ -13,14 +13,25 @@
 </head>
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
-    <div class="container">
-        <h1>Welcome, ${sessionScope.user.username}!</h1>
-    </div>
     <center>
-        <a href="/addEmployee"> <button type="submit">Add Employee</button> </a>
-        <a href="/create"> <button type="submit">Add Inventory</button> </a>
-        <a href="#"> <button type="submit">Delete Inventory</button> </a>
-        <a href="/results"> <button type="submit">View All Inventory</button> </a>
+        <div class="container">
+            <h1>Welcome, ${sessionScope.user.username}!</h1>
+
+            <center>
+                <a href="/addEmployee"> <button type="submit">Add Employee</button> </a>
+                <a href="/AddInventory"> <button type="submit">Add Inventory</button> </a>
+                <a href="#"> <button type="submit">Delete Inventory</button> </a>
+            </center>
+            <h1>Current Inventory</h1>
+
+            <c:forEach var="brand" items="${brands}">
+                <div class="col-md-4">
+                    <h2>${brand.brand}</h2>
+                    <p>${brand.quantity}</p>
+                    <p>${brand.category}</p>
+                </div>
+            </c:forEach>
+        </div>
     </center>
 </body>
 </html>

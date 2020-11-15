@@ -5,18 +5,20 @@ public class Brand {
     private String brand;
     private int quantity;
     private String category;
+
     public Brand(){};
+
     public Brand(String brandName, int quantity, String liquorType){
         this.brand = brandName;
         this.quantity = quantity;
         this.category = liquorType;
     }
 
-    public Brand(long id, String brandName, int quantity, String category) {
+    public Brand(long id, String brandName, int quantity, String liquorType) {
         this.id = id;
         this.brand = brandName;
         this.quantity = quantity;
-        this.category = category;
+        this.category = liquorType;
 
     }
 

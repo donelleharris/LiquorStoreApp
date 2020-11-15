@@ -9,11 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-
-@WebServlet(name = "ResultsServlet", urlPatterns = "/results")
-public class ResultsServlet extends HttpServlet {
+@WebServlet(name = "IndexServlet", urlPatterns = "/index")
+public class IndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("brands", DaoFactory.getBrandsDao().all());
-        request.getRequestDispatcher("/WEB-INF/addInventory/results.jsp").forward(request, response);
+        request.getRequestDispatcher("/index.jsp");
     }
 }
