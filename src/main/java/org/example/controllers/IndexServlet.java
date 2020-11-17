@@ -13,6 +13,6 @@ import java.io.IOException;
 public class IndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("brands", DaoFactory.getBrandsDao().all());
-        request.getRequestDispatcher("/index.jsp");
+        request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 }

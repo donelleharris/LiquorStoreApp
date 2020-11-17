@@ -1,5 +1,7 @@
 package org.example.controllers;
 
+import org.example.dao.DaoFactory;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,6 +17,7 @@ public class ViewEmployeeServlet extends HttpServlet {
             response.sendRedirect("/login");
             return;
         }
+        request.setAttribute("brands", DaoFactory.getBrandsDao().all());
         request.getRequestDispatcher("/WEB-INF/employee.jsp").forward(request, response);
     }
 }
