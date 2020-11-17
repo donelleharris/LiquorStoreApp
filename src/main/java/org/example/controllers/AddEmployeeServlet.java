@@ -33,6 +33,16 @@ public class AddEmployeeServlet extends HttpServlet {
             return;
         }
 
+        //check for duplicate username
+        boolean isDuplicateUsername = true;
+        if (DaoFactory.getEmployeesDao().findByUsername(username) == null){
+            isDuplicateUsername = false;
+        }
+        if(isDuplicateUsername){
+            response.sendRedirect("/addEmployee");
+            return;
+        }
+
         // create and save a new user
         Employee employee = new Employee(username, password);
         DaoFactory.getEmployeesDao().insert(employee);
